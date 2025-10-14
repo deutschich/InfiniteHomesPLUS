@@ -3,33 +3,31 @@ name: Preview Release
 on:
   push:
     branches:
-      - dev   # Trigger auf Push zur dev-Branch
+      - dev   # Trigger bei Push auf dev-Branch
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
-      # 🧾 Schritt 1: Repository auschecken
+      # Schritt 1: Code auschecken
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      # ☕ Schritt 2: Java einrichten
+      # Schritt 2: Java einrichten (notwendig für Build)
       - name: Set up Java
         uses: actions/setup-java@v4
         with:
           java-version: '21'
           distribution: 'temurin'
 
-      # 🛠️ Schritt 3: Gradle Wrapper Berechtigungen setzen (falls nötig)
-      - name: Grant execute permission for Gradle Wrapper
-        run: chmod +x gradlew
+      # Schritt 3: Build mit Gradle
+      - name: Build Plugin with Gradle
+        run: ./gradlew clean build
 
-      # 🧱 Schritt 4: Plugin mit Gradle bauen
-      - name: Build Plugin
-        run: ./gradlew clean build -x test
-
-      # 🚀 Schritt 5: Preview Release erstellen
+      # Schritt 4: Preview Release erstellen
       - name: Create Preview Release
         uses: softprops/action-gh-release@v2
         with:
@@ -44,7 +42,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # 🧹 Schritt 6: Alte Preview Releases löschen (nur 10 behalten)
+      # Schritt 5: Alte Preview Releases bereinigen (nur 10 neuste behalten)
       - name: Cleanup old Preview Releases
         run: |
           echo "Deleting old Preview Releases, keeping only the 10 newest..."
