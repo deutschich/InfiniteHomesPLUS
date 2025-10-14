@@ -1,0 +1,57 @@
+name: Preview Release
+
+on:
+  push:
+    branches:
+      - dev   # Trigger auf Push zur dev-Branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 🧾 Schritt 1: Repository auschecken
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # ☕ Schritt 2: Java einrichten
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      # 🛠️ Schritt 3: Gradle Wrapper Berechtigungen setzen (falls nötig)
+      - name: Grant execute permission for Gradle Wrapper
+        run: chmod +x gradlew
+
+      # 🧱 Schritt 4: Plugin mit Gradle bauen
+      - name: Build Plugin
+        run: ./gradlew clean build -x test
+
+      # 🚀 Schritt 5: Preview Release erstellen
+      - name: Create Preview Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: preview-${{ github.run_number }}
+          name: "Preview Build #${{ github.run_number }}"
+          body: |
+            🚀 Automatic Preview Build
+            Commit: ${{ github.sha }}
+            Branch: ${{ github.ref_name }}
+          prerelease: true
+          files: build/libs/*.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # 🧹 Schritt 6: Alte Preview Releases löschen (nur 10 behalten)
+      - name: Cleanup old Preview Releases
+        run: |
+          echo "Deleting old Preview Releases, keeping only the 10 newest..."
+          gh release list --limit 100 --repo $GITHUB_REPOSITORY \
+          | grep preview \
+          | sort -rk2 \
+          | awk 'NR>10 {print $1}' \
+          | xargs -I {} gh release delete {} --repo $GITHUB_REPOSITORY --yes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
