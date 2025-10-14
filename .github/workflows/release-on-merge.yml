@@ -1,0 +1,56 @@
+name: Release on Merge to Master
+
+on:
+  push:
+    branches:
+      - master   # oder "main", je nach Repo
+    paths-ignore:
+      - '**.md'       # ignoriert reine Dokumentationsänderungen
+      - '.github/**'  # ignoriert Änderungen an Actions selbst
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 🧾 Schritt 1: Repository auschecken
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # ☕ Schritt 2: Java einrichten
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+
+      # 🛠️ Schritt 3: Gradle Wrapper Berechtigungen setzen (unter Linux erforderlich)
+      - name: Grant execute permission for Gradle Wrapper
+        run: chmod +x gradlew
+
+      # 🧱 Schritt 4: Plugin bauen
+      - name: Build with Gradle
+        run: ./gradlew clean build -x test
+
+      # 🏷️ Schritt 5: Version aus Gradle ermitteln
+      - name: Get version
+        id: get_version
+        run: |
+          VERSION=$(./gradlew properties -q | grep "^version:" | awk '{print $2}')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      # 🚀 Schritt 6: GitHub Release erstellen
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.get_version.outputs.version }}
+          name: "Release v${{ steps.get_version.outputs.version }}"
+          body: |
+            **v${{ steps.get_version.outputs.version }}**
+            - Commit: ${{ github.sha }}
+            - Branch: ${{ github.ref_name }}
+            - Version: v${{ steps.get_version.outputs.version }}
+          files: |
+            build/libs/*.jar
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
