@@ -1,7 +1,7 @@
 name: InfiniteHomesPLUS
-version: 1.2+
+version: 1.2.1+
 main: com.user404_.infinitehomes.InfiniteHomes
-website: https://github.com/deutschich/InfiniteHomes/tree/%2B
+website: https://github.com/deutschich/InfiniteHomesPLUS/
 api-version: 1.21
 commands:
   sethome:
