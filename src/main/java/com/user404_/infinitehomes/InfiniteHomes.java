@@ -61,14 +61,14 @@ public class InfiniteHomes extends JavaPlugin implements TabCompleter {
         getCommand("globalhome").setTabCompleter(this);
         getCommand("delglobalhome").setTabCompleter(this);
 
-        getLogger().info("InfiniteHomes plugin enabled!");
+        getLogger().info("InfiniteHomes plugin by User404 enabled!");
     }
 
     @Override
     public void onDisable() {
         saveHomesToConfig();
         saveGlobalHomesToConfig();
-        getLogger().info("InfiniteHomes plugin disabled!");
+        getLogger().info("InfiniteHomes plugin by User404 disabled!");
     }
 
     @Override
