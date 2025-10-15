@@ -1,5 +1,5 @@
 name: InfiniteHomesPLUS
-version: 1.3+
+version: 1.3+-preview
 main: com.user404_.infinitehomes.InfiniteHomes
 website: https://github.com/deutschich/InfiniteHomesPLUS/
 api-version: 1.21

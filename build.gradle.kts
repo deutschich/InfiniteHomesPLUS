@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "com.user404_"
-version = "1.3+"
+version = "1.3+-preview"
 
 repositories {
     mavenCentral()
