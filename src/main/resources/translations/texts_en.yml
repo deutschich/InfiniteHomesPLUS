@@ -16,6 +16,9 @@ usage.homecooldown: "§cUsage: /homecooldown <seconds>"
 usage.setglobalhome: "§cUsage: /setglobalhome <name>"
 usage.globalhome: "§cUsage: /globalhome <name>"
 usage.delglobalhome: "§cUsage: /delglobalhome <name>"
+usage.setplayerhome: "§cUsage: /setplayerhome <name>"
+usage.playerhome: "§cUsage: /playerhome <name>"
+usage.delplayerhome: "§cUsage: /delplayerhome <name>"
 
 # Home messages
 home.set: "§aHome '{home}' set!"
@@ -30,6 +33,14 @@ globalhome.deleted: "§aGlobal home '{home}' deleted!"
 globalhome.not_exist: "§cGlobal home '{home}' does not exist."
 globalhome.teleport: "§aTeleported to global home '{home}'!"
 
+# Player home messages
+playerhome.set: "§aPlayer home '{home}' set!"
+playerhome.deleted: "§aPlayer home '{home}' deleted!"
+playerhome.not_exist: "§cPlayer home '{home}' does not exist."
+playerhome.teleport: "§aTeleported to player home '{home}'!"
+playerhome.already_exists: "§cA player home with the name '{home}' already exists."
+playerhome.not_owner: "§cYou are not the owner of this player home."
+
 # Homes list messages
 homes.none: "§cYou don't have any homes set."
 homes.unlimited: "unlimited"
@@ -42,6 +53,11 @@ homes.limit.set: "§aGlobal home limit set to {max}."
 globalhomes.none: "§cThere are no global homes set."
 globalhomes.list.header: "§aAvailable global homes:"
 globalhomes.list.items: "§e{homes}"
+
+# Player homes list messages
+playerhomes.none: "§cThere are no player homes set."
+playerhomes.list.header: "§aAvailable player homes:"
+playerhomes.list.items: "§e{homes}"
 
 # Cooldown messages
 cooldown.set: "§aGlobal home cooldown set to {time} seconds."

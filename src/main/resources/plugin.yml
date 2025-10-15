@@ -1,5 +1,5 @@
 name: InfiniteHomesPLUS
-version: 1.2.1+
+version: 1.3+
 main: com.user404_.infinitehomes.InfiniteHomes
 website: https://github.com/deutschich/InfiniteHomesPLUS/
 api-version: 1.21
@@ -41,3 +41,23 @@ commands:
     description: Delete a global home (OP only)
     usage: /delglobalhome <name>
     aliases: [deleteglobalhome, dgh]
+  setplayerhome:
+    description: Set a player home accessible to all players
+    usage: /setplayerhome <name>
+    aliases: [sph]
+  playerhome:
+    description: Teleport to a player home
+    usage: /playerhome <name>
+    aliases: [ph]
+  playerhomes:
+    description: List all player homes
+    usage: /playerhomes
+    aliases: [phs, listplayerhomes]
+  delplayerhome:
+    description: Delete a player home (owner or OP only)
+    usage: /delplayerhome <name>
+    aliases: [dph, deleteplayerhome]
+permissions:
+  infinitehomes.playerhomes.allowed:
+    description: Allows setting player homes
+    default: true
