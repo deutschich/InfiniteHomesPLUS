@@ -219,6 +219,7 @@ public class InfiniteHomes extends JavaPlugin implements TabCompleter {
 
         // Standard-Übersetzung (Englisch) aus Ressourcen laden
         saveResource("translations/texts_en.yml", false);
+        saveResource("translations/texts_de.yml", false);
 
         // Verfügbare Übersetzungen laden
         loadTranslations();
@@ -254,6 +255,18 @@ public class InfiniteHomes extends JavaPlugin implements TabCompleter {
                 }
             } catch (Exception e) {
                 getLogger().log(Level.WARNING, "Error loading default English translation", e);
+            }
+        }
+        if (!translations.containsKey("de")) {
+            try {
+                InputStream stream = getResource("translations/texts_de.yml");
+                if (stream != null) {
+                    FileConfiguration config = YamlConfiguration.loadConfiguration(
+                            new InputStreamReader(stream, StandardCharsets.UTF_8));
+                    translations.put("en", config);
+                }
+            } catch (Exception e) {
+                getLogger().log(Level.WARNING, "Error loading default German translation", e);
             }
         }
     }
@@ -724,15 +737,13 @@ public class InfiniteHomes extends JavaPlugin implements TabCompleter {
 
             String homeName = args[0].toLowerCase();
             if (playerHomes.containsKey(homeName)) {
-                PlayerHomeData homeData = playerHomes.get(homeName);
-
-                // Check if player is owner or has admin permissions
-                if (homeData.getOwner().equals(playerUuid) || player.isOp()) {
+                // Nur Spieler mit der Delete-Permission können PlayerHomes löschen
+                if (player.hasPermission("infinitehomes.playerhomes.delete")) {
                     playerHomes.remove(homeName);
                     savePlayerHomesToConfig();
                     player.sendMessage(getMessage(player, "playerhome.deleted").replace("{home}", homeName));
                 } else {
-                    player.sendMessage(getMessage(player, "playerhome.not_owner"));
+                    player.sendMessage(getMessage(player, "playerhome.contact_server_team"));
                 }
             } else {
                 player.sendMessage(getMessage(player, "playerhome.not_exist").replace("{home}", homeName));

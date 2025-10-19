@@ -1,4 +1,4 @@
-# InfiniteHomes - Translation File
+# InfiniteHomesPLUS - Translation File
 # You can create translations for different languages in the translations folder
 # Name the files texts_[lang].yml (e.g., texts_de.yml for German)
 
@@ -39,7 +39,7 @@ playerhome.deleted: "§aPlayer home '{home}' deleted!"
 playerhome.not_exist: "§cPlayer home '{home}' does not exist."
 playerhome.teleport: "§aTeleported to player home '{home}'!"
 playerhome.already_exists: "§cA player home with the name '{home}' already exists."
-playerhome.not_owner: "§cYou are not the owner of this player home."
+playerhome.contact_server_team: "§cYou cannot delete player homes. Please contact the server team."
 
 # Homes list messages
 homes.none: "§cYou don't have any homes set."

@@ -54,10 +54,13 @@ commands:
     usage: /playerhomes
     aliases: [phs, listplayerhomes]
   delplayerhome:
-    description: Delete a player home (owner or OP only)
+    description: Delete a player home (Team members only)
     usage: /delplayerhome <name>
     aliases: [dph, deleteplayerhome]
 permissions:
   infinitehomes.playerhomes.allowed:
     description: Allows setting player homes
     default: true
+  infinitehomes.playerhomes.delete:
+    description: Allows deleting player homes (Team members only)
+    default: op

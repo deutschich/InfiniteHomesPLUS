@@ -1,48 +1,64 @@
-# InfiniteHomes - Übersetzungsdatei
-# Du kannst Übersetzungen für verschiedene Sprachen im translations-Ordner erstellen
+# InfiniteHomesPLUS - Übersetzungsdatei
+# Du kannst Übersetzungen für verschiedene Sprachen im translations-Ordner erstellen.
 # Benenne die Dateien texts_[lang].yml (z. B. texts_de.yml für Deutsch)
 
 # Allgemeine Nachrichten
 no_permission: "§cDu hast keine Berechtigung, diesen Befehl zu verwenden."
 invalid_number: "§cBitte gib eine gültige Zahl ein."
-cooldown.range: "§cDer Cooldown muss zwischen -1 und 60 Sekunden liegen."
+cooldown.range: "§cDie Abklingzeit muss zwischen -1 und 60 Sekunden liegen."
 
-# Befehlsnutzung
-usage.sethome: "§cBenutzung: /sethome <Name>"
-usage.delhome: "§cBenutzung: /delhome <Name>"
-usage.home: "§cBenutzung: /home <Name>"
-usage.homecount: "§cBenutzung: /homecount <Zahl>"
-usage.homecooldown: "§cBenutzung: /homecooldown <Sekunden>"
-usage.setglobalhome: "§cBenutzung: /setglobalhome <Name>"
-usage.globalhome: "§cBenutzung: /globalhome <Name>"
-usage.delglobalhome: "§cBenutzung: /delglobalhome <Name>"
+# Befehlsverwendung
+usage.sethome: "§cVerwendung: /sethome <Name>"
+usage.delhome: "§cVerwendung: /delhome <Name>"
+usage.home: "§cVerwendung: /home <Name>"
+usage.homecount: "§cVerwendung: /homecount <Zahl>"
+usage.homecooldown: "§cVerwendung: /homecooldown <Sekunden>"
+usage.setglobalhome: "§cVerwendung: /setglobalhome <Name>"
+usage.globalhome: "§cVerwendung: /globalhome <Name>"
+usage.delglobalhome: "§cVerwendung: /delglobalhome <Name>"
+usage.setplayerhome: "§cVerwendung: /setplayerhome <Name>"
+usage.playerhome: "§cVerwendung: /playerhome <Name>"
+usage.delplayerhome: "§cVerwendung: /delplayerhome <Name>"
 
 # Home-Nachrichten
-home.set: "§aHome '{home}' gesetzt!"
-home.deleted: "§aHome '{home}' gelöscht!"
+home.set: "§aHome '{home}' wurde gesetzt!"
+home.deleted: "§aHome '{home}' wurde gelöscht!"
 home.not_exist: "§cHome '{home}' existiert nicht."
-home.teleport: "§aTeleportiert zum Home '{home}'!"
+home.teleport: "§aDu wurdest zu Home '{home}' teleportiert!"
 home.cooldown: "§cDu musst {time} Sekunden warten, bevor du /home erneut verwenden kannst."
 
 # Globale Home-Nachrichten
-globalhome.set: "§aGlobales Home '{home}' gesetzt!"
-globalhome.deleted: "§aGlobales Home '{home}' gelöscht!"
+globalhome.set: "§aGlobales Home '{home}' wurde gesetzt!"
+globalhome.deleted: "§aGlobales Home '{home}' wurde gelöscht!"
 globalhome.not_exist: "§cGlobales Home '{home}' existiert nicht."
-globalhome.teleport: "§aTeleportiert zum globalen Home '{home}'!"
+globalhome.teleport: "§aDu wurdest zu globalem Home '{home}' teleportiert!"
 
-# Home-Liste Nachrichten
+# Spieler-Home-Nachrichten
+playerhome.set: "§aSpieler-Home '{home}' wurde gesetzt!"
+playerhome.deleted: "§aSpieler-Home '{home}' wurde gelöscht!"
+playerhome.not_exist: "§cSpieler-Home '{home}' existiert nicht."
+playerhome.teleport: "§aDu wurdest zu Spieler-Home '{home}' teleportiert!"
+playerhome.already_exists: "§cEin Spieler-Home mit dem Namen '{home}' existiert bereits."
+playerhome.contact_server_team: "§cDu kannst keine Spieler-Homes löschen. Bitte kontaktiere das Server-Team."
+
+# Home-Liste
 homes.none: "§cDu hast keine Homes gesetzt."
 homes.unlimited: "unbegrenzt"
 homes.list.header: "§aDeine Homes (§e{current}§a/§e{max}§a):"
 homes.list.items: "§e{homes}"
 homes.limit.reached: "§cDu hast die maximale Anzahl an Homes erreicht ({max})."
-homes.limit.set: "§aGlobales Home-Limit auf {max} gesetzt."
+homes.limit.set: "§aGlobales Home-Limit wurde auf {max} gesetzt."
 
-# Globale Home-Liste Nachrichten
-globalhomes.none: "§cEs sind keine globalen Homes gesetzt."
+# Globale Home-Liste
+globalhomes.none: "§cEs wurden keine globalen Homes gesetzt."
 globalhomes.list.header: "§aVerfügbare globale Homes:"
 globalhomes.list.items: "§e{homes}"
 
-# Cooldown-Nachrichten
-cooldown.set: "§aGlobaler Home-Cooldown auf {time} Sekunden gesetzt."
-cooldown.disabled: "§aHome-Cooldown deaktiviert."
+# Spieler-Home-Liste
+playerhomes.none: "§cEs wurden keine Spieler-Homes gesetzt."
+playerhomes.list.header: "§aVerfügbare Spieler-Homes:"
+playerhomes.list.items: "§e{homes}"
+
+# Abklingzeit-Nachrichten
+cooldown.set: "§aGlobale Home-Abklingzeit wurde auf {time} Sekunden gesetzt."
+cooldown.disabled: "§aHome-Abklingzeit deaktiviert."
